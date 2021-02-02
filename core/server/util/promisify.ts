@@ -1,3 +1,10 @@
+/**
+ * Promisify a function
+ *
+ * @param fn - Function to be promisified
+ * @param context - Context if any to be binded to
+ * @returns Promisified function
+ */
 export function promisify<
   Parameter extends unknown,
   ReturnValue extends unknown

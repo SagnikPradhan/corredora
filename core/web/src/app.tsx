@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Logs } from "./logs";
+import { Logs } from "./components/core/log";
 
 function App() {
   return (

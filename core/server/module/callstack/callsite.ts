@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { SourceMapConsumer } from "source-map";
 
-type Nullable<T> = T | null;
+import { Nullable } from "@self/type/util";
 
 export interface CallSite {
   fileName: Nullable<string>;
@@ -128,4 +128,16 @@ function getSourceMapPath(mainFilePath: string) {
   return sourceMapPath
     ? path.join(path.dirname(mainFilePath), sourceMapPath)
     : null;
+}
+
+export function stripLibraryTopStacks(callstack: CallSite[]) {
+  let passedNonLibraryStack = false;
+
+  return callstack.filter((stack) => {
+    if (passedNonLibraryStack) return true;
+    else {
+      if (stack.fileName === __filename) return false;
+      else return true;
+    }
+  });
 }

@@ -1,4 +1,4 @@
-// https://coolors.co/fdfffc-131b23-fcb87c-ff7c0a-e85d75-d81e5b-ccf5b8-1cfeba
+// https://coolors.co/fdfffc-131b23-fedec3-ff7c0a-f5b8c2-d81e5b-f2fced-1cfeba
 module.exports = {
   darkMode: false,
 
@@ -6,16 +6,16 @@ module.exports = {
     colors: {
       white: "#fdfffc",
       black: "#131b23",
-      "orange-light": "#fcb87c",
+      "orange-light": "#FEDEC3",
       orange: "#ff7c0a",
-      "red-light": "#e85d75",
+      "red-light": "#F5B8C2",
       red: "#d81e5b",
-      "green-light": "#ccf5b8",
+      "green-light": "#F2FCED",
       green: "#1cfeba",
     },
 
     fontFamily: {
-      sans: ["Inter", "sans-serif"],
+      monospace: ["Roboto Mono", "monospace"],
     },
   },
 };

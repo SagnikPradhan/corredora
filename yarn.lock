@@ -1207,6 +1207,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@rollup/plugin-alias@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "@rollup/plugin-alias@npm:3.1.2"
+  dependencies:
+    slash: ^3.0.0
+  peerDependencies:
+    rollup: ^1.20.0||^2.0.0
+  checksum: cb0e59b25308d10c5bde8cc1f6e200d74fc98d4739800b4bd4b91d6b8ff07514a068d3a63a0c8fb125e7bc5602566c69687c291330580ca85425269413d7639c
+  languageName: node
+  linkType: hard
+
 "@rollup/pluginutils@npm:^4.1.0":
   version: 4.1.0
   resolution: "@rollup/pluginutils@npm:4.1.0"
@@ -2197,9 +2208,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "corredora@workspace:core"
   dependencies:
+    "@rollup/plugin-alias": ^3.1.2
     "@types/serve-handler": ^6.1.0
     "@types/ws": ^7.4.0
     "@wessberg/rollup-plugin-ts": ^1.3.8
+    nanoid: ^3.1.20
     rollup: ^2.38.1
     serve-handler: ^6.1.3
     source-map: 0.6.0

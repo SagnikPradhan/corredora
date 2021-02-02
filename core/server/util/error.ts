@@ -1,4 +1,4 @@
-export class AppError extends Error {
+export class CorredoraError extends Error {
   public readonly name: string;
   public readonly isOperational: boolean;
   public readonly cause?: Error;
@@ -33,7 +33,7 @@ export class AppError extends Error {
 export function handleError(error: Error) {
   console.error(error);
 
-  if (error instanceof AppError && error.isOperational) return;
+  if (error instanceof CorredoraError && error.isOperational) return;
   else process.exit(1);
 }
 

@@ -1,75 +1,76 @@
 import path from "path";
-import { overrideStack } from "./module/callstack";
-import { Server } from "./module/server";
-import { DataTypes, RecursiveObject } from "./type";
-import { CallSite } from "./utils/callstack";
+import { CallSite } from "./module/callstack/callsite";
+import { overrideStack } from "./module/callstack/override";
+import { server, ServerSendFn } from "./module/server";
+import { Data } from "./type";
 
-export const logger = async () => {
-  const server = new Server(path.join(__dirname, "../web/dist"));
-  await server.listen(5000);
+const PORT = 5000;
+const PUBLIC_PATH = path.join(__dirname, "../web/dist");
+const DEV_MODE = process.env.NODE_ENV !== "production";
 
-  const callstacksMap = overrideStack();
+/** Logger Interface */
+export interface Logger {
+  /** Name of the logger */
+  name: string;
 
-  return new Logger({ name: "root", server, callstacksMap });
-};
+  /** Sends information */
+  info: (data: Data) => Promise<void>;
 
-class Logger {
-  public readonly name: string;
-  private readonly server: Server;
-  private readonly callstacksMap: Map<string, CallSite[]>;
+  /**
+   * Only shown during development mode
+   * i.e. `process.env.NODE_ENV !== "production"`
+   */
+  debug: (data: Data) => Promise<void>;
 
-  constructor({
+  /** Sends error report */
+  error: (error: Error) => Promise<void>;
+}
+
+/**
+ * Create a new logger
+ *
+ * @param name - Name of the logger
+ * @param options - Options
+ * @param options.parent - Parent logger
+ * @param options.server - Logger server
+ */
+export async function logger(
+  name: string,
+  options: {
+    parent?: Logger;
+    internal?: {
+      send: ServerSendFn;
+      stackMap: Map<string, CallSite[]>;
+    };
+  } = {}
+): Promise<Logger> {
+  const stackMap = options.internal?.stackMap || overrideStack();
+
+  // Create server if not instance was provided. Initialise it too.
+  const send =
+    options.internal?.send ||
+    (await server({
+      port: PORT,
+      publicPath: PUBLIC_PATH,
+      stackMap,
+    }));
+
+  return {
     name,
-    server,
-    callstacksMap,
-  }: {
-    name: string;
-    server: Server;
-    callstacksMap: Map<string, CallSite[]>;
-  }) {
-    this.name = name;
-    this.server = server;
-    this.callstacksMap = callstacksMap;
-  }
 
-  async log(data: DataTypes) {
-    return this.internalLog("LOG", data);
-  }
+    debug: (data) => {
+      if (DEV_MODE) return send("DEBUG", data);
+      else return Promise.resolve();
+    },
 
-  async debug(data: DataTypes) {
-    if (process.env.NODE_ENV !== "production")
-      return this.internalLog("DEBUG", data);
-  }
+    error: (error) => {
+      return send("ERROR", error);
+    },
 
-  private async internalLog(type: "DEBUG" | "LOG", data: DataTypes) {
-    await this.server.send({
-      type,
-      data,
-      date: new Date().toISOString(),
-      callsites: [],
-    });
-  }
-
-  async error({ message, name, stack, ...props }: Error) {
-    this.server.send({
-      type: "ERROR",
-      data: {
-        message,
-        name,
-        props: props as RecursiveObject<DataTypes>,
-      },
-      date: new Date().toISOString(),
-      callsites: this.callstacksMap.get(stack!)!,
-    });
-  }
-
-  async child(name: string) {
-    return new Logger({
-      name,
-      server: this.server,
-      callstacksMap: this.callstacksMap,
-    });
-  }
+    info: (data) => {
+      return send("INFO", data);
+    },
+  };
 }
 
 export * from "./type";
