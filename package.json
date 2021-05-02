@@ -1,16 +1,15 @@
 {
-  "name": "root",
+  "name": "corredora-root",
   "version": "0.0.0",
-  "workspaces": [
-    "./**/*"
-  ],
   "license": "MIT",
-  "private": true,
-  "author": "Sagnik Pradhan <markten6321@gmail.com>",
+  "workspaces": [
+    "./packages/cli",
+    "./packages/library",
+    "./packages/example"
+  ],
   "devDependencies": {
-    "@yarnpkg/pnpify": "^2.4.0",
-    "prettier": "^2.2.1",
-    "tailwindcss": "^2.0.2",
-    "typescript": "^4.1.3"
-  }
+    "typescript": "^4.2.4"
+  },
+  "private": true,
+  "author": "Sagnik Pradhan <markten6321@gmail.com>"
 }

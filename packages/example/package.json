@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "private": true,
+  "main": "index.js",
+  "devDependencies": {
+    "@corredora/cli": "workspace:packages/cli"
+  }
+}
