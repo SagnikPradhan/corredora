@@ -1,15 +1,18 @@
 {
-  "name": "corredora-root",
+  "name": "corredora",
   "version": "0.0.0",
-  "license": "MIT",
   "workspaces": [
-    "./packages/cli",
-    "./packages/library",
-    "./packages/example"
+    "./**/*"
   ],
+  "scripts": {
+    "dev": "concurrently yarn:cli:dev yarn:library:dev"
+  },
   "devDependencies": {
+    "@types/node": "^15.6.0",
+    "concurrently": "^6.1.0",
     "typescript": "^4.2.4"
   },
   "private": true,
-  "author": "Sagnik Pradhan <markten6321@gmail.com>"
+  "author": "Sagnik Pradhan <markten6321@gmail.com>",
+  "license": "MIT"
 }

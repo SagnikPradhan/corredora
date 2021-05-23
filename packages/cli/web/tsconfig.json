@@ -2,10 +2,18 @@
   "extends": "../../../tsconfig.json",
 
   "compilerOptions": {
-    "lib": ["es2020", "dom"],
-    "rootDir": "./source",
-    "jsx": "preserve",
-    "noEmit": true,
-    "isolatedModules": true
-  }
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react",
+
+    "types": ["vite/client"],
+
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+
+  "include": ["./src"]
 }

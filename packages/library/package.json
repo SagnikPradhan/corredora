@@ -1,3 +1,17 @@
 {
-  "name": "library"
+  "name": "@corredora/logger",
+  "main": "./dist/index.js",
+  "scripts": {
+    "library:build": "yarn build",
+    "library:dev": "yarn dev",
+    "build": "tsc",
+    "dev": "tsc -w --preserveWatchOutput"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.1.2",
+    "stackman": "^4.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
+  }
 }
