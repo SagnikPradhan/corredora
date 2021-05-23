@@ -1857,7 +1857,7 @@ __metadata:
     cross-fetch: ^3.1.4
     isomorphic-ws: ^4.0.1
     rollup: ^2.48.0
-    rollup-plugin-clean: ^1.0.0
+    rollup-plugin-clear: ^2.0.7
     rollup-plugin-terser: ^7.0.2
     tslib: ^2.2.0
     typescript: ^4.2.4
@@ -1980,6 +1980,14 @@ __metadata:
   checksum: 590b04533177f8f6f0f352b3ac7da6c1c1e3d8375d8973972fba9c94558ca168685fd38319c3c6f4c37ba256df7494a7f15d8e761df1655af8a8f0027d988f8f
   languageName: node
   linkType: hard
+
+"example@workspace:packages/example":
+  version: 0.0.0-use.local
+  resolution: "example@workspace:packages/example"
+  dependencies:
+    corredora: "workspace:packages/library"
+  languageName: unknown
+  linkType: soft
 
 "fs-minipass@npm:^2.0.0":
   version: 2.1.0
@@ -2769,7 +2777,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"rimraf@npm:^2.6.1":
+"rimraf@npm:^2.6.2":
   version: 2.7.1
   resolution: "rimraf@npm:2.7.1"
   dependencies:
@@ -2791,12 +2799,12 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"rollup-plugin-clean@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "rollup-plugin-clean@npm:1.0.0"
+"rollup-plugin-clear@npm:^2.0.7":
+  version: 2.0.7
+  resolution: "rollup-plugin-clear@npm:2.0.7"
   dependencies:
-    rimraf: ^2.6.1
-  checksum: fc07888d8835e3083a52ef7aec23e6e2319eeba3f02411a34103730d1eca6fbe2e6bef454b9ccc3acb1b2ea527c0fd5bfc1f4f7f37b6e6ab2d6ba04754dabfa1
+    rimraf: ^2.6.2
+  checksum: cfeb8190ef171a6eb49e5e6bcff5b71635afd8d6c40599177b0b125dc1c8f7f0a17f960702d86413097e06b7c16eef7bcf1a34aabb11d8af9f16f6929ebe8e82
   languageName: node
   linkType: hard
 

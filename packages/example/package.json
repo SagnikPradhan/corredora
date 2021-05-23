@@ -1,0 +1,6 @@
+{
+  "name": "example",
+  "dependencies": {
+    "corredora": "workspace:packages/library"
+  }
+}

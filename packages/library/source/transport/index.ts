@@ -1,5 +1,3 @@
-import fetch from "cross-fetch";
-
 import { Log, SERVER_PORT } from "../utils/type";
 import { handleError } from "../utils/error";
 

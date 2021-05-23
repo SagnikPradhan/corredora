@@ -2,7 +2,7 @@ import typescript from "@wessberg/rollup-plugin-ts";
 import commonjs from "@rollup/plugin-commonjs";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
-import clean from "rollup-plugin-clean";
+import clear from "rollup-plugin-clear";
 
 import packageJson from "./package.json";
 
@@ -10,16 +10,22 @@ const DEV = process.env.ROLLUP_WATCH;
 
 /** @type import("rollup").RollupOptions */
 const config = {
-  input: "./source/index.ts",
+  input: "./source/main.ts",
 
-  plugins: [clean(), nodeResolve(), commonjs(), typescript()],
+  plugins: [
+    nodeResolve(),
+    commonjs(),
+    typescript(),
+    clear({ targets: ["./dist"] }),
+  ],
 
   external: Object.keys(packageJson.dependencies),
+
+  preserveEntrySignatures: "allow-extension",
 
   output: [
     {
       dir: "./dist",
-      format: "cjs",
       sourcemap: true,
     },
   ],
