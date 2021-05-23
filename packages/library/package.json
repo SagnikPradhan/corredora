@@ -1,17 +1,32 @@
 {
-  "name": "@corredora/logger",
+  "name": "corredora",
+  "description": "Corredora Library",
+  "version": "0.0.0",
   "main": "./dist/index.js",
+  "files": [
+    "./dist"
+  ],
   "scripts": {
-    "library:build": "yarn build",
-    "library:dev": "yarn dev",
-    "build": "tsc",
-    "dev": "tsc -w --preserveWatchOutput"
+    "dev": "rollup -c -w",
+    "build": "rollup -c"
   },
   "dependencies": {
-    "socket.io-client": "^4.1.2",
-    "stackman": "^4.0.1"
+    "cross-fetch": "^3.1.4",
+    "isomorphic-ws": "^4.0.1",
+    "ws": "^7.4.5"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@types/node": "^15.6.0",
+    "@types/ws": "^7",
+    "@wessberg/rollup-plugin-ts": "^1.3.14",
+    "rollup": "^2.48.0",
+    "rollup-plugin-clean": "^1.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "tslib": "^2.2.0",
     "typescript": "^4.2.4"
-  }
+  },
+  "author": "Sagnik Pradhan <markten6321@gmail.com>",
+  "license": "MIT"
 }

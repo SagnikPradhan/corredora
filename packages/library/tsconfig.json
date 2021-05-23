@@ -3,9 +3,12 @@
 
   "compilerOptions": {
     "lib": ["es2020", "dom"],
+    "module": "commonjs",
+
     "rootDir": "source",
     "outDir": "dist",
-    "declaration": true,
-    "sourceMap": true
+
+    "sourceMap": true,
+    "declaration": true
   }
 }
