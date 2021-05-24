@@ -1,4 +1,3 @@
-import "cross-fetch";
 import { Transport } from "./transport";
 import { LogLevel } from "./utils/type";
 

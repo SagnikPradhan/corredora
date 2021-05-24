@@ -1,0 +1,20 @@
+{
+  // https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach",
+      "port": 9229,
+      "request": "attach",
+      "type": "pwa-node",
+
+      "skipFiles": [
+        "<node_internals>/**",
+        "node_modules/**",
+        "internal/**",
+        "${workspaceFolder}/.yarn/**",
+        "${workspaceFolder}/.pnp.js"
+      ]
+    }
+  ]
+}

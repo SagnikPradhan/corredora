@@ -3,6 +3,8 @@ import commonjs from "@rollup/plugin-commonjs";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import clear from "rollup-plugin-clear";
+import sizes from "rollup-plugin-sizes";
+import { builtinModules } from "module";
 
 import packageJson from "./package.json";
 
@@ -19,7 +21,7 @@ const config = {
     clear({ targets: ["./dist"] }),
   ],
 
-  external: Object.keys(packageJson.dependencies),
+  external: [...builtinModules, ...Object.keys(packageJson.dependencies)],
 
   preserveEntrySignatures: "allow-extension",
 
@@ -27,10 +29,11 @@ const config = {
     {
       dir: "./dist",
       sourcemap: true,
+      format: "cjs",
     },
   ],
 };
 
-if (!DEV) config.plugins.push(terser());
+if (!DEV) config.plugins.push(terser(), sizes());
 
 export default config;

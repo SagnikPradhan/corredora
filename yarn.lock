@@ -1858,6 +1858,7 @@ __metadata:
     isomorphic-ws: ^4.0.1
     rollup: ^2.48.0
     rollup-plugin-clear: ^2.0.7
+    rollup-plugin-sizes: ^1.0.4
     rollup-plugin-terser: ^7.0.2
     tslib: ^2.2.0
     typescript: ^4.2.4
@@ -1986,8 +1987,16 @@ __metadata:
   resolution: "example@workspace:packages/example"
   dependencies:
     corredora: "workspace:packages/library"
+    typescript: ^4.2.4
   languageName: unknown
   linkType: soft
+
+"filesize@npm:^6.0.1":
+  version: 6.3.0
+  resolution: "filesize@npm:6.3.0"
+  checksum: 6bd6b30fbece9e3e04eca3e8f2656f336e86b16b598af69d9e0b38039b11bfa3955ee101f17bedaed01a65118710bb78b40f3df4518055d1f37b355500cc68ee
+  languageName: node
+  linkType: hard
 
 "fs-minipass@npm:^2.0.0":
   version: 2.1.0
@@ -2488,6 +2497,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"module-details-from-path@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "module-details-from-path@npm:1.0.3"
+  checksum: bf25f3d009ccb56ff2de6e42fd81ee109c839a1bd44a07050087fb6c61c14b9dd471310cc0e77f4f4ed655bfbd7ce9349a2e090f5f40b73e3dfc3e3f445fa159
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.1.2":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -2805,6 +2821,18 @@ fsevents@~2.3.1:
   dependencies:
     rimraf: ^2.6.2
   checksum: cfeb8190ef171a6eb49e5e6bcff5b71635afd8d6c40599177b0b125dc1c8f7f0a17f960702d86413097e06b7c16eef7bcf1a34aabb11d8af9f16f6929ebe8e82
+  languageName: node
+  linkType: hard
+
+"rollup-plugin-sizes@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "rollup-plugin-sizes@npm:1.0.4"
+  dependencies:
+    filesize: ^6.0.1
+    module-details-from-path: ^1.0.3
+  peerDependencies:
+    rollup: ^2.0.0
+  checksum: 6464236cc1bf6935a16b64df1a049dc781ead1abe2a72a392262b1fd611e60a2366a9178160ddd8c5397c9cd8dc029d4e493ff8bf3e7e8c28229a5290df94c2a
   languageName: node
   linkType: hard
 

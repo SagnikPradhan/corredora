@@ -1,6 +1,13 @@
 {
   "name": "example",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
   "dependencies": {
     "corredora": "workspace:packages/library"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
   }
 }

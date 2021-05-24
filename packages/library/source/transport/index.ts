@@ -1,3 +1,4 @@
+import fetch from "cross-fetch";
 import { Log, SERVER_PORT } from "../utils/type";
 import { handleError } from "../utils/error";
 
@@ -21,13 +22,14 @@ export class Transport {
     if (this.#communicationLayer) this.#communicationLayer.push([log]);
   }
 
-  private isServerOffline() {
-    return fetch(`http://localhost:${SERVER_PORT}`)
-      .then(() => false)
-      .catch((error) => {
-        if (error.code === "ECONNREFUSED") return true;
-        else throw error;
-      });
+  private async isServerOffline() {
+    try {
+      await fetch(`http://localhost:${SERVER_PORT}`);
+      return false;
+    } catch (error) {
+      if (error.code === "ECONNREFUSED") return true;
+      else throw error;
+    }
   }
 
   private async startTransport(connector: "server" | "client") {
