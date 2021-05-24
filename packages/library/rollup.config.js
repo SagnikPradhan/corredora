@@ -12,7 +12,7 @@ const DEV = process.env.ROLLUP_WATCH;
 
 /** @type import("rollup").RollupOptions */
 const config = {
-  input: "./source/main.ts",
+  input: ["./source/main.ts", "./source/internal.ts"],
 
   plugins: [
     nodeResolve(),

@@ -1,3 +1,4 @@
+import http from "http";
 import WebSocket from "isomorphic-ws";
 
 import { PushLogsFn, CommunicationLayerFactory } from "..";
@@ -17,7 +18,16 @@ export const createServer: CommunicationLayerFactory = ({
 }) => {
   const logs = [] as Log[];
 
-  const server = new WebSocket.Server({ port: SERVER_PORT });
+  const httpServer = http.createServer((req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
+    if (req.url === "/" && req.method === "GET") res.statusCode = 200;
+    else res.statusCode = 400;
+
+    return res.end();
+  });
+
+  const server = new WebSocket.Server({ server: httpServer });
   const subscribers = new Set<WebSocket>();
 
   const push: PushLogsFn = (newLogs) => {
@@ -38,6 +48,8 @@ export const createServer: CommunicationLayerFactory = ({
       createMessageListener({ socket, subscribers, push, logs })
     );
   });
+
+  httpServer.listen(SERVER_PORT);
 
   return { push };
 };
@@ -61,7 +73,7 @@ function createMessageListener({
       socket.on("close", () => subscribers.delete(socket));
 
       const payload: ServerPayload = { type: "log", logs };
-      socket.emit(JSON.stringify(payload), handleError);
+      socket.send(JSON.stringify(payload), handleError);
       return;
     }
 

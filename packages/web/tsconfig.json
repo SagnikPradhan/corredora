@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.json",
+
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "lib": ["dom", "es2020"],
+
+    "allowJs": true,
+    "noEmit": true,
+    "sourceMap": true,
+
+    "allowSyntheticDefaultImports": true,
+    "preserveConstEnums": true,
+    "isolatedModules": true
+  },
+
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+}
