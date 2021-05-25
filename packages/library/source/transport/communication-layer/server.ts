@@ -1,7 +1,7 @@
 import http from "http";
 import WebSocket from "isomorphic-ws";
 
-import { PushLogsFn, CommunicationLayerFactory } from "..";
+import { CommunicationLayerFactory, CommunicationLayer } from "..";
 
 import {
   SERVER_PORT,
@@ -12,10 +12,7 @@ import {
 
 import { handleError } from "../../utils/error";
 
-export const createServer: CommunicationLayerFactory = ({
-  onReady,
-  onClose,
-}) => {
+export const create: CommunicationLayerFactory = ({ onReady, onClose }) => {
   const logs = [] as Log[];
 
   const httpServer = http.createServer((req, res) => {
@@ -30,7 +27,7 @@ export const createServer: CommunicationLayerFactory = ({
   const server = new WebSocket.Server({ server: httpServer });
   const subscribers = new Set<WebSocket>();
 
-  const push: PushLogsFn = (newLogs) => {
+  const push: CommunicationLayer["push"] = (newLogs) => {
     logs.push(...newLogs);
 
     const payload: ServerPayload = { type: "log", logs: newLogs };

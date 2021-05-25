@@ -15,15 +15,12 @@ const config = {
   input: ["./source/main.ts", "./source/internal.ts"],
 
   plugins: [
-    nodeResolve(),
+    nodeResolve({ extensions: [".mjs", ".js", ".json", ".node", ".ts"] }),
     commonjs(),
     typescript(),
-    clear({ targets: ["./dist"] }),
   ],
 
   external: [...builtinModules, ...Object.keys(packageJson.dependencies)],
-
-  preserveEntrySignatures: "allow-extension",
 
   output: [
     {
@@ -32,8 +29,11 @@ const config = {
       format: "cjs",
     },
   ],
+
+  preserveEntrySignatures: "allow-extension",
 };
 
-if (!DEV) config.plugins.push(terser(), sizes());
+if (!DEV)
+  config.plugins.push(clear({ targets: ["./dist"] }), terser(), sizes());
 
 export default config;
