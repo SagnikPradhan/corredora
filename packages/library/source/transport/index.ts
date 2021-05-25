@@ -2,8 +2,6 @@ import fetch from "cross-fetch";
 import { Log, SERVER_PORT } from "../utils/type";
 import { handleError } from "../utils/error";
 
-type Mutable<T> = { current: T };
-
 export interface CommunicationLayer {
   push: (logs: Log[]) => void;
 }
@@ -13,68 +11,55 @@ export type CommunicationLayerFactory = (param: {
   onClose: () => void;
 }) => CommunicationLayer;
 
-export function createTransport() {
-  const logs = [] as Log[];
-  const layer = handleCommunicationLayer((layer) => layer.push(logs));
+class Transport {
+  #logs = [] as Log[];
+  #communicationLayer?: CommunicationLayer;
 
-  return {
-    addLog: function (log: Log) {
-      logs.push(log);
-      if (layer.current) layer.current.push([log]);
-    },
-  };
-}
+  public addLog(log: Log) {
+    this.#logs.push(log);
+    if (this.#communicationLayer) this.#communicationLayer.push([log]);
+  }
 
-const isNode = typeof process !== undefined;
+  public async initConnection() {
+    const serverOffline = await this.isServerOffline();
+    if (!serverOffline) return this.startTransport("client");
 
-function handleCommunicationLayer(
-  onReady: (communicationLayer: ReturnType<CommunicationLayerFactory>) => void
-) {
-  // Mutable because communication layer can be replaced in future
-  const mutableLayer: Mutable<CommunicationLayer | null> = { current: null };
+    const isNode = typeof process !== "undefined";
+    if (isNode) return this.startTransport("server");
+    else setTimeout(() => this.initConnection().catch(handleError), 5000);
+  }
 
-  // Keeps track of communication layer
-  // If the connection closes in any case, a new connection is created
-  // Also waits for server to initialise in case of browsers
-  const internalAsync = async () => {
-    const serverOffline = await isServerOffline();
-
-    // Wait for the server to start
-    // If we cannot start the server ourselves and it is offline
-    if (serverOffline && !isNode) {
-      setTimeout(() => internalAsync().catch(handleError), 5000);
+  private async isServerOffline() {
+    try {
+      await fetch(`http://localhost:${SERVER_PORT}`);
+      return false;
+    } catch (error) {
+      if (error.code === "ECONNREFUSED") return true;
+      else throw error;
     }
+  }
 
-    // Use the client module if another server is online
-    // Otherwise start the server module ourselves
-    else {
-      const module = await (serverOffline
-        ? import("./communication-layer/server")
-        : import("./communication-layer/client"));
+  private async startTransport(connector: "server" | "client") {
+    const create =
+      connector === "server"
+        ? (await import("./communication-layer/server")).create
+        : (await import("./communication-layer/client")).create;
 
-      const layer = module.create({
-        onReady: () => onReady(layer),
-        onClose: () => {
-          mutableLayer.current = null;
-          internalAsync().catch(handleError);
-        },
-      });
+    const communicationLayer = create({
+      onReady: () => communicationLayer.push(this.#logs),
 
-      mutableLayer.current = layer;
-    }
-  };
+      onClose: () => {
+        this.#communicationLayer = undefined;
+        this.initConnection();
+      },
+    });
 
-  internalAsync().catch(handleError);
-
-  return mutableLayer;
-}
-
-async function isServerOffline() {
-  try {
-    await fetch(`http://localhost:${SERVER_PORT}`);
-    return false;
-  } catch (error) {
-    if (error.code === "ECONNREFUSED") return true;
-    else throw error;
+    this.#communicationLayer = communicationLayer;
   }
 }
+
+export const createTransport = () => {
+  const transport = new Transport();
+  transport.initConnection().catch(handleError);
+  return transport;
+};
