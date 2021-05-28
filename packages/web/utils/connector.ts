@@ -29,7 +29,13 @@ export function useConnector() {
     },
 
     message: (data) => {
+      // Parse payload
       const payload: ServerPayload = JSON.parse(data);
+      payload.logs = payload.logs.map((log) => ({
+        ...log,
+        timestamp: new Date(log.timestamp),
+      }));
+
       setLogs((logs) => [...payload.logs, ...logs]);
     },
   });
