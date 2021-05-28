@@ -8,9 +8,9 @@ import {
   Log,
   ServerPayload,
   ClientPayload,
-} from "../../utils/type";
+} from "../../../utils/type";
 
-import { handleError } from "../../utils/error";
+import { handleError } from "../../../utils/error";
 
 export const create: CommunicationLayerFactory = ({ onReady, onClose }) => {
   const logs = [] as Log[];

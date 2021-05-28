@@ -2,8 +2,8 @@ import WebSocket from "isomorphic-ws";
 
 import { CommunicationLayer, CommunicationLayerFactory } from "..";
 
-import { ClientPayload, SERVER_PORT } from "../../utils/type";
-import { handleError } from "../../utils/error";
+import { ClientPayload, SERVER_PORT } from "../../../utils/type";
+import { handleError } from "../../../utils/error";
 
 export const create: CommunicationLayerFactory = ({ onReady, onClose }) => {
   const client = new WebSocket(`ws://localhost:${SERVER_PORT}`);

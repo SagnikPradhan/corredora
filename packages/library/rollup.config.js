@@ -20,7 +20,11 @@ const config = {
     typescript(),
   ],
 
-  external: [...builtinModules, ...Object.keys(packageJson.dependencies)],
+  external: [
+    ...builtinModules,
+    ...Object.keys(packageJson.dependencies),
+    ...Object.keys(packageJson.optionalDependencies),
+  ],
 
   output: [
     {
