@@ -1258,6 +1258,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@corredora/web@workspace:packages/web":
+  version: 0.0.0-use.local
+  resolution: "@corredora/web@workspace:packages/web"
+  dependencies:
+    "@types/node": 15.0.0
+    "@types/react": 17.0.4
+    "@types/react-dom": 17.0.3
+    "@types/styled-components": 5.1.9
+    babel-plugin-styled-components: ^1.12.0
+    corredora: "workspace:packages/library"
+    next: latest
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    react-is: ^17.0.2
+    react-json-tree: ^0.15.0
+    styled-components: ^5.2.3
+    styled-reset: ^4.3.4
+    typescript: 4.2.4
+  languageName: unknown
+  linkType: soft
+
 "@emotion/is-prop-valid@npm:^0.8.8":
   version: 0.8.8
   resolution: "@emotion/is-prop-valid@npm:0.8.8"
@@ -1502,6 +1523,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/base16@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "@types/base16@npm:1.0.2"
+  checksum: 0befdc73be877d530dd9964c45e5ab55859ea08ed2f06caf2b51343ee2051f000c2814eeda6fa66359fc38a26f4163b752184d7ca606ebd9b71daea336965a23
+  languageName: node
+  linkType: hard
+
 "@types/estree@npm:*":
   version: 0.0.47
   resolution: "@types/estree@npm:0.0.47"
@@ -1526,6 +1554,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash.curry@npm:^4.1.6":
+  version: 4.1.6
+  resolution: "@types/lodash.curry@npm:4.1.6"
+  dependencies:
+    "@types/lodash": "*"
+  checksum: 7e4e1dc62569c9c66a4b27c9d592af4264de47f94a89a3ccec518f97e6c1733c3f92aa1b5f06b5443d66c0e7ae9a316d3a97984226512e305deb3d2bf9b6040f
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:*":
+  version: 4.14.170
+  resolution: "@types/lodash@npm:4.14.170"
+  checksum: 5ecc968649e764e3204435ba5125a3645e5e83963069a26b9307791698bf47ed9c2bd0f97488d9537eb4753d4bae596e5fa6187437a5b04bf47aba78fa553d50
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*, @types/node@npm:^15.6.0":
   version: 15.6.0
   resolution: "@types/node@npm:15.6.0"
@@ -1547,7 +1591,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:*":
+"@types/prop-types@npm:*, @types/prop-types@npm:^15.7.3":
   version: 15.7.3
   resolution: "@types/prop-types@npm:15.7.3"
   checksum: bd0eab69d5120ad3784d0c9985f902653d5924707a7f2b3702a330e762dfd61b6494954cb54ad0c52b918ffd6f1e7e27c9270e4442bc15250de348596f2f60cb
@@ -1822,6 +1866,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"as-table@npm:^1.0.36":
+  version: 1.0.55
+  resolution: "as-table@npm:1.0.55"
+  dependencies:
+    printable-characters: ^1.0.42
+  checksum: 2f94b0ab5c44d15e2c3d89ae37e53fd18ee88a0e5a0e2a79a9e65913763530fb20daf3f31756dc128c3c25285afb7f2ab14a9a4e3ea70456241f6cb992fe24e1
+  languageName: node
+  linkType: hard
+
 "asn1.js@npm:^5.2.0":
   version: 5.4.1
   resolution: "asn1.js@npm:5.4.1"
@@ -1942,6 +1995,13 @@ __metadata:
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
   checksum: 690643f3009a04289ac401079de5a780aae452f7625fb2884051cc847b231e6521ee15dd6430b066d3cf4bd8bb00bb7ff55b7d134f34b8f0b8c043806796f94e
+  languageName: node
+  linkType: hard
+
+"base16@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "base16@npm:1.0.0"
+  checksum: adc3f12a6b363a2bfa4062d45e2782791737f7ceb0857c027486fc90fd3fc8eaf1829c55cc7a4afd6e482105282ffc18362bc10b2a4c788f3102de3054558eba
   languageName: node
   linkType: hard
 
@@ -2302,7 +2362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-convert@npm:^1.9.0":
+"color-convert@npm:^1.9.0, color-convert@npm:^1.9.1":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
   dependencies:
@@ -2327,10 +2387,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-name@npm:~1.1.4":
+"color-name@npm:^1.0.0, color-name@npm:~1.1.4":
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: 3e1c9a4dee12eada307436f61614dd11fe300469db2b83f80c8b7a7cd8a1015f0f18dd13403f018927b249003777ff60baba4a03c65f12e6bddc0dfd9642021f
+  languageName: node
+  linkType: hard
+
+"color-string@npm:^1.5.4":
+  version: 1.5.5
+  resolution: "color-string@npm:1.5.5"
+  dependencies:
+    color-name: ^1.0.0
+    simple-swizzle: ^0.2.2
+  checksum: 3d7799f70d389214757c83bdc27380081dbeee18f90148b883ff7e86e9a599c68ccb8a956b7175e761dcd98d1061fdc58ca89ca4b1f6ca20f8ce05cc8c4e564a
+  languageName: node
+  linkType: hard
+
+"color@npm:^3.1.2":
+  version: 3.1.3
+  resolution: "color@npm:3.1.3"
+  dependencies:
+    color-convert: ^1.9.1
+    color-string: ^1.5.4
+  checksum: d0f4139e986806aaacaa748d170c9778faed93695fb776cd27d9c5825424263eb9354f69033804d0d2d350d9831a31d14dddff045da00713499f279da97e602f
   languageName: node
   linkType: hard
 
@@ -2420,13 +2500,18 @@ __metadata:
     "@wessberg/rollup-plugin-ts": ^1.3.14
     cross-fetch: ^3.1.4
     isomorphic-ws: ^4.0.1
+    nanoid: ^3.1.23
     rollup: ^2.48.0
     rollup-plugin-clear: ^2.0.7
     rollup-plugin-sizes: ^1.0.4
     rollup-plugin-terser: ^7.0.2
+    stacktracey: ^2.1.7
     tslib: ^2.2.0
     typescript: ^4.2.4
-    ws: ^7.4.5
+    ws: ^7.4.6
+  dependenciesMeta:
+    ws:
+      optional: true
   languageName: unknown
   linkType: soft
 
@@ -2553,6 +2638,13 @@ __metadata:
   version: 3.0.1
   resolution: "data-uri-to-buffer@npm:3.0.1"
   checksum: 9f28217ba76eaca400a75f4b1a1d0f55058082c8152a3d88ad5feeec5e54b8c7b6d8a7bb210206bfa552a927c1b942b6102ddbb2feaa557321ea94762c4f14e2
+  languageName: node
+  linkType: hard
+
+"data-uri-to-buffer@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "data-uri-to-buffer@npm:2.0.2"
+  checksum: 18dff77894532e33c8fcab836c74998361699e1746479952e7a65823eccc9c49c57c148c25c3bb72ca89107bc2194d026948845ba961ad6760236e2e9054b4f8
   languageName: node
   linkType: hard
 
@@ -2940,6 +3032,16 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"get-source@npm:^2.0.12":
+  version: 2.0.12
+  resolution: "get-source@npm:2.0.12"
+  dependencies:
+    data-uri-to-buffer: ^2.0.0
+    source-map: ^0.6.1
+  checksum: a367ff1ba2a385dbb94237b290cc096690ed5d3b7ca8bdd91c1ae2c62ac9099cbb5e11b79d5c2f2e216047cbc394f0caf66b7ff3af1e806ff4a47905b5f8a8b9
+  languageName: node
+  linkType: hard
+
 "glob-parent@npm:~5.1.0":
   version: 5.1.2
   resolution: "glob-parent@npm:5.1.2"
@@ -3225,6 +3327,13 @@ fsevents@~2.3.1:
   dependencies:
     call-bind: ^1.0.0
   checksum: 967bf47b472eba6c07685a0a2c59724c5a2f3ecc9183ebbf3d33989906e2353d0d669ca7e06b0482f31cc8e6f1785b4a2775cb9506acb48cadd0e1d5c5cf12ad
+  languageName: node
+  linkType: hard
+
+"is-arrayish@npm:^0.3.1":
+  version: 0.3.2
+  resolution: "is-arrayish@npm:0.3.2"
+  checksum: 0687b6b8f2443a45116ce25d8b11979591af625bd8a7515f5d8de2fcb80979655bc9d1cbbd2146c34f2728a234d1ea81d397e06f1ae3feb02c8f6df16766a4a0
   languageName: node
   linkType: hard
 
@@ -3520,6 +3629,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"lodash.curry@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lodash.curry@npm:4.1.1"
+  checksum: 081f9214b5d65030e66d0219c330de5a07089096f20362fc965c671b70b2bdb7b8f4cbac45546f79afed3bf17ae46434ffea9db1dbcbe043a09b722e2834ac3d
+  languageName: node
+  linkType: hard
+
 "lodash.debounce@npm:^4.0.8":
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
@@ -3769,7 +3885,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.1.22":
+"nanoid@npm:^3.1.22, nanoid@npm:^3.1.23":
   version: 3.1.23
   resolution: "nanoid@npm:3.1.23"
   bin:
@@ -4198,6 +4314,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"printable-characters@npm:^1.0.42":
+  version: 1.0.42
+  resolution: "printable-characters@npm:1.0.42"
+  checksum: dbfb2d4461be8cc6dc5d60244216b8a5db730c6976f8b437266b28b37b03bf822eb0eece9493edd0a995edd03b4832eb139f2dff871d60162a19dd4f40cc90d5
+  languageName: node
+  linkType: hard
+
 "process-nextick-args@npm:~2.0.0":
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
@@ -4229,7 +4352,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"prop-types@npm:15.7.2":
+"prop-types@npm:15.7.2, prop-types@npm:^15.7.2":
   version: 15.7.2
   resolution: "prop-types@npm:15.7.2"
   dependencies:
@@ -4327,6 +4450,20 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"react-base16-styling@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "react-base16-styling@npm:0.8.0"
+  dependencies:
+    "@types/base16": ^1.0.2
+    "@types/lodash.curry": ^4.1.6
+    base16: ^1.0.0
+    color: ^3.1.2
+    csstype: ^3.0.2
+    lodash.curry: ^4.1.1
+  checksum: 1676a94077dbdd60bd5c7d7fbcf54be5b90fdcb7d0c03f0a27da51bc88348fa0aac45a6f6edaf0aec4fa480d2e9daaa036c33a7eaffda82fd414cf18f32c1cfc
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
@@ -4351,6 +4488,20 @@ fsevents@~2.3.1:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 3eff23f410d40ab9bc5177f147a92c7f42c356a21ecea340e0554566956d67e5e1ba56f26cc7fa22339ac3c7151744177bd6305eaa26d3cbf15f354358c9d9b6
+  languageName: node
+  linkType: hard
+
+"react-json-tree@npm:^0.15.0":
+  version: 0.15.0
+  resolution: "react-json-tree@npm:0.15.0"
+  dependencies:
+    "@types/prop-types": ^15.7.3
+    prop-types: ^15.7.2
+    react-base16-styling: ^0.8.0
+  peerDependencies:
+    "@types/react": ^16.3.0 || ^17.0.0
+    react: ^16.3.0 || ^17.0.0
+  checksum: 0e509ee22408e64e69aad364d94548193ce7348c38c9a120244bc1172d787cbc2f39ff83f5154723002718fd22a66d9ae63dab778d79bab6630ebc3a5653de1f
   languageName: node
   linkType: hard
 
@@ -4701,6 +4852,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"simple-swizzle@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "simple-swizzle@npm:0.2.2"
+  dependencies:
+    is-arrayish: ^0.3.1
+  checksum: a5a2c1c86cea94f42ab843508e7c68b5bbfd15acb08056d600ac2e9c7f7c41bc417e71160ea3034a5411d3cce186c801f7a56badfb3a854906ce163120318875
+  languageName: node
+  linkType: hard
+
 "slash@npm:^3.0.0":
   version: 3.0.0
   resolution: "slash@npm:3.0.0"
@@ -4798,6 +4958,16 @@ fsevents@~2.3.1:
   dependencies:
     type-fest: ^0.7.1
   checksum: 56e3cc5d33bdc4cf80428db155edd692c05331cb5eaa2fb93057db3848187f10089796094a5118c4e965b5ade2e76499e524081f54b00cdc315a3bf6f27d64ff
+  languageName: node
+  linkType: hard
+
+"stacktracey@npm:^2.1.7":
+  version: 2.1.7
+  resolution: "stacktracey@npm:2.1.7"
+  dependencies:
+    as-table: ^1.0.36
+    get-source: ^2.0.12
+  checksum: f5900196bc7c045ce443726df3eb174a85528365d76f992a71a279b4a28fe25cbb715ef8e572dfe5e95b4a1df311cc901e22811ed5711c3aab25095d8add18af
   languageName: node
   linkType: hard
 
@@ -4992,6 +5162,15 @@ fsevents@~2.3.1:
   peerDependencies:
     react: 15.x.x || 16.x.x || 17.x.x
   checksum: 479d44268272f185308a8b1f7e3cd7bacac95bc153976ab9bf20818c6b542d5729817186365153d490a1ca9c4158f3f08d58c828a236a65485bdf827c83e0b12
+  languageName: node
+  linkType: hard
+
+"styled-reset@npm:^4.3.4":
+  version: 4.3.4
+  resolution: "styled-reset@npm:4.3.4"
+  peerDependencies:
+    styled-components: ">=4.0.0 || >=5.0.0"
+  checksum: 9d92fd569cb7f7d359d34ed7a28c1a5f7647bfcc123eee58e4f21d295f865aa97e43724a1d57fc46b876a8cb24b520152db8bc038d766c119d65adab8bf5f3e4
   languageName: node
   linkType: hard
 
@@ -5389,25 +5568,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"with-typescript-styled-components@workspace:packages/web":
-  version: 0.0.0-use.local
-  resolution: "with-typescript-styled-components@workspace:packages/web"
-  dependencies:
-    "@types/node": 15.0.0
-    "@types/react": 17.0.4
-    "@types/react-dom": 17.0.3
-    "@types/styled-components": 5.1.9
-    babel-plugin-styled-components: ^1.12.0
-    corredora: "workspace:packages/library"
-    next: latest
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    react-is: ^17.0.2
-    styled-components: ^5.2.3
-    typescript: 4.2.4
-  languageName: unknown
-  linkType: soft
-
 "wrappy@npm:1":
   version: 1.0.2
   resolution: "wrappy@npm:1.0.2"
@@ -5415,9 +5575,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"ws@npm:^7.4.5":
-  version: 7.4.5
-  resolution: "ws@npm:7.4.5"
+"ws@npm:^7.4.6":
+  version: 7.4.6
+  resolution: "ws@npm:7.4.6"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ^5.0.2
@@ -5426,7 +5586,7 @@ fsevents@~2.3.1:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 20731aa1075336b94677f6741b674469c3c7fce9b70115bb535827c7c108a9d714f0b38ce39289b63c652870f9801afaf096f8aab32da96be62d919e80e4ed32
+  checksum: ffeb626d92f14aa3a67aa3784824c1d290131e25d225f4ca6b1b6b6d7ea754fca67694d89a5b99b144382365e1bccf1f7ec2f92df56f0d25f44939b070452f06
   languageName: node
   linkType: hard
 
