@@ -9,36 +9,27 @@ import { Source } from "./elements/source";
 const LogComponent = styled.div<{ index: number }>`
   display: contents;
 
-  ${TimeStamp} {
+  & > * {
     z-index: 30;
     position: relative;
 
+    grid-row: ${({ index }) => index + 2} / span 1;
+  }
+
+  ${TimeStamp} {
     grid-column: 1 / 2;
-    grid-row: ${({ index }) => index} / span 1;
   }
 
   ${Name} {
-    z-index: 30;
-    position: relative;
-
     grid-column: 2 / 3;
-    grid-row: ${({ index }) => index} / span 1;
   }
 
   ${Data} {
-    z-index: 30;
-    position: relative;
-
     grid-column: 4 / 5;
-    grid-row: ${({ index }) => index} / span 1;
   }
 
   ${Source} {
-    z-index: 30;
-    position: relative;
-
     grid-column: 5 / 6;
-    grid-row: ${({ index }) => index} / span 1;
   }
 `;
 

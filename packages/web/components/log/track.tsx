@@ -11,7 +11,7 @@ export const Tracks = ({ logs }: { logs: Log[] }) => {
         level: current.level,
         span: 1,
         id: current.id,
-        start: (last?.start || 1) + (last?.span || 0),
+        start: (last?.start || 1) + (last?.span || 1),
       });
 
     return tracks;
@@ -36,9 +36,11 @@ const Track = styled.div<{
   margin: 1em 0;
 
   background-color: ${({ level }) => decideColour(level)};
-  width: 3px;
 
-  z-index: 10;
+  border-radius: 2.5px;
+  width: 5px;
+
+  z-index: 30;
   position: relative;
 `;
 

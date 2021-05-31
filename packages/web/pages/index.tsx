@@ -2,8 +2,8 @@ import { Container } from "../components/container";
 import { LogGrid } from "../components/log/grid";
 import { Log } from "../components/log";
 import { Tracks } from "../components/log/track";
-import { BlurLayer } from "../components/blur-layer";
 import { Logo } from "../components/logo";
+import { Labels } from "../components/log/label";
 
 import { useConnector } from "../utils/connector";
 
@@ -15,15 +15,15 @@ export default function Home() {
       <Logo>Corredora</Logo>
 
       <LogGrid>
+        <Labels />
+
         {logs.map((log, index) => (
-          <Log index={index + 1} key={log.id}>
+          <Log index={index} key={log.id}>
             {log}
           </Log>
         ))}
 
         <Tracks logs={logs} />
-
-        <BlurLayer length={logs.length} />
       </LogGrid>
     </Container>
   );

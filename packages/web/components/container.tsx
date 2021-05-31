@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ReactNode } from "react";
 import { Reset } from "styled-reset";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
     --font-sans: 'Poppins', sans-serif;
     --font-mono: 'Roboto Mono', monospace;
+    --font-special: 'Montserrat', sans-serif;
 
     --font-light: 300;
     --font-normal: 400;
@@ -32,6 +33,8 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
+
+
   }
 `;
 
@@ -41,7 +44,7 @@ export const Container = ({ children }: { children: ReactNode }) => {
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&family=Roboto+Mono&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;800&family=Roboto+Mono&Montserrat:wght@500;700&display=swap"
           rel="stylesheet"
         />
       </Head>

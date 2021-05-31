@@ -12,7 +12,7 @@ export const BaseTimeStamp = ({
 };
 
 export const TimeStamp = styled(BaseTimeStamp)`
-  padding: 1em 0 1em 2em;
+  padding: 1em 0;
 
   display: flex;
   justify-content: center;

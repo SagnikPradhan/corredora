@@ -2,8 +2,10 @@ import StackTracey from "stacktracey";
 import { customAlphabet, nanoid } from "nanoid/non-secure";
 
 import { createTransport } from "./modules/transport";
-import { JSONValues, LogLevel } from "./utils/type";
+import { JSONValues } from "./utils/types/json";
+import { LogLevel } from "./utils/types/log";
 import { CorredoraError, handleError } from "./utils/error";
+
 export interface CorredoraLoggerOptions {
   name?: string;
 }
@@ -25,18 +27,15 @@ export class CorredoraLogger {
   }
 
   public info(data: JSONValues) {
-    const internalAsync = async () => {
-      this.transport.addLog({
-        data,
-        id: this.generateId(),
-        name: this.name,
-        level: LogLevel.INFO,
-        timestamp: new Date(),
-        callstack: await this.getStackTrace(),
-      });
-    };
+    this.internalLog(data, LogLevel.INFO).catch(handleError);
+  }
 
-    internalAsync().catch(handleError);
+  public debug(data: JSONValues) {
+    this.internalLog(data, LogLevel.DEBUG);
+  }
+
+  public warn(data: JSONValues) {
+    this.internalLog(data, LogLevel.WARN);
   }
 
   public error(error: Error) {
@@ -58,6 +57,20 @@ export class CorredoraLogger {
 
   private generateId() {
     return nanoid();
+  }
+
+  private async internalLog(
+    data: JSONValues,
+    level: Exclude<LogLevel, LogLevel.ERROR>
+  ) {
+    this.transport.addLog({
+      data,
+      id: this.generateId(),
+      name: this.name,
+      level,
+      timestamp: new Date(),
+      callstack: await this.getStackTrace(),
+    });
   }
 
   private async getStackTrace(error?: Error) {

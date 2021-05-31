@@ -5,12 +5,12 @@ import { CommunicationLayerFactory, CommunicationLayer } from "..";
 
 import {
   SERVER_PORT,
-  Log,
   ServerPayload,
   ClientPayload,
-} from "../../../utils/type";
+} from "corredora/source/utils/types/server";
+import { Log } from "corredora/source/utils/types/log";
 
-import { handleError } from "../../../utils/error";
+import { handleError } from "corredora/source/utils/error";
 
 export const create: CommunicationLayerFactory = ({ onReady, onClose }) => {
   const logs = [] as Log[];

@@ -2,7 +2,10 @@ import WebSocket from "isomorphic-ws";
 
 import { CommunicationLayer, CommunicationLayerFactory } from "..";
 
-import { ClientPayload, SERVER_PORT } from "../../../utils/type";
+import {
+  ClientPayload,
+  SERVER_PORT,
+} from "corredora/source/utils/types/server";
 import { handleError } from "../../../utils/error";
 
 export const create: CommunicationLayerFactory = ({ onReady, onClose }) => {
