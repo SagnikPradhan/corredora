@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+
+  "compilerOptions": {
+    "lib": ["es2020", "dom"],
+    "module": "commonjs",
+
+    "rootDir": "source",
+    "outDir": "dist",
+
+    "sourceMap": true,
+    "declaration": true
+  }
+}
